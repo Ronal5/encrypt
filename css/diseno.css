@@ -1,0 +1,211 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: linear-gradient(220deg,#E53E8D,#F3F5FC,#F3F5FC,#F3F5FC,#F3F5FC,#F3F5FC,#F3F5FC,#F3F5FC,#E53E8D);
+    font-family: monospace;
+}
+.contenedor{
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4,auto) ;
+   
+    grid-template-areas: "header header header"
+                         "contenido contenido sidebar"
+                         "widget-1 widget-2 sidebar"
+                         "footer footer footer";                   
+    
+}
+.contenedor > div,
+.contenedor .header,
+.contenedor .contenido,
+.contenedor .sidebar,
+.contenedor .footer{
+   
+    padding: 20px;
+    border-radius: 4px;
+}
+.contenedor .header {
+    
+    grid-area: header;
+}
+.contenedor .contenido{
+    border-radius: 20px;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+    grid-area: contenido;
+}
+/*Entrada input*/
+.contenedor .contenido #entrada{
+    background: #F3F5FC;
+    color: #890B3B;
+    font-size: large;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align:center;
+  
+    outline: none;
+    border-radius: 20px;
+    border: none;
+    width: 100%;
+    height: 100%;
+    resize: none;
+}
+.contenedor .contenido #entrada::placeholder{
+ color: #890B3B;
+}
+.contenedor .sidebar{
+    background-image: url("../images/A.png");
+    background-size:contain;
+    border-radius: 20px;
+    box-shadow: 3px 4px 7px rgb(227,37,126);
+    grid-column: 3 / 4;
+    grid-area: sidebar;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6,auto) ;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas: "mostrar mostrar"
+                         "mostrar mostrar"
+                         "mostrar mostrar"
+                         "mostrar mostrar"
+                         "mostrar mostrar"
+                         "widget-0 widget-0";   
+}
+/*Contenedor de boton copiar*/
+.contenedor .sidebar .widget-0{
+    border-radius: 20px;
+    background: #fff;
+    grid-area: widget-0;
+    line-height: 20px;
+}
+/*boton copiar*/
+.contenedor .sidebar .widget-0 #copy{
+    background:#fff;
+    color: #DB1C5D;
+    border-color: #F24478;
+    display: none;
+    margin-left: 15px;
+    outline: none;
+    border-radius: 20px;
+    width: 90%;
+    padding: 10px;
+}
+.contenedor .sidebar .widget-0 #copy:hover{
+    box-shadow: 3px 4px 7px rgb(227,37,126);
+}
+/*Contenedor del textarea*/
+.contenedor .sidebar #mostrar{
+    background: #fff;
+    display: none;/*Ocultar contenedor de salida*/
+    border-radius: 20px;
+    width: 100%;
+    grid-area: mostrar;  
+}
+/*textarea*/
+.contenedor .sidebar #mostrar #salida{
+    background: #fff;
+    color: #890B3B;
+    font-size: large;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border: none;
+    text-align: center;
+    vertical-align: middle;
+    outline: none;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    resize: none;
+    
+}
+/*Contenedor de los botones encriptar y desencriptar*/
+.contenedor .widget-1,
+.contenedor .widget-2{
+    
+    color: #fff;
+    height: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 0;
+    text-align: center;
+    align-items:center;
+    justify-content: center;
+}
+.contenedor .widget-1{
+    grid-area: widget-1;
+}
+.contenedor .widget-1 #enc{
+    background: #DB1C5D;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+}
+.contenedor .widget-1 #enc:hover{
+    transform: translate(1PX,5PX);
+    box-shadow: 3px 4px 7px #531741;
+}
+.contenedor .widget-2{
+    grid-area: widget-2;
+}
+.contenedor .widget-2 #desc{
+    background: #EB3897;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+}
+.contenedor .widget-2 #desc:hover{
+    transform: translate(1PX,5PX);
+    box-shadow: 3px 4px 7px #531741;
+}
+.contenedor .footer{
+ 
+    color: black;
+    grid-area: footer;
+   
+}
+p{
+ color: #531741;   
+ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+ font-size:smaller;
+}
+@media screen and (max-width: 768px){
+    .contenedor{
+        grid-template-areas: "header header header"
+                             "contenido contenido contenido"
+                             "sidebar sidebar sidebar"
+                             "widget-1 widget-1 widget-2 "
+                             "footer footer footer";
+    }
+    .contenedor .contenido{
+        height: 100px;
+    }
+    .contenedor .sidebar{
+        height: 250px; 
+        background: #fff;
+    }
+
+}
+@media screen and (max-width: 480px){
+    .contenedor{
+        grid-template-areas: "header header header"
+                             "contenido contenido contenido"
+                             "sidebar sidebar sidebar"
+                             "widget-1 widget-1 widget-1 "
+                             "widget-2 widget-2 widget-2 "
+                             "footer footer footer";
+    }
+
+}
